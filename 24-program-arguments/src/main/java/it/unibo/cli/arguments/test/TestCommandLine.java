@@ -1,6 +1,9 @@
 package it.unibo.cli.arguments.test;
 
 class TestCommandLine {
+    private static String wordToFormatedString(String word){
+        return ("* " + word + ", " + word.length() + " caracters long");
+    }
 
     public static void main(final String[] args) {
         /*
@@ -22,5 +25,9 @@ class TestCommandLine {
          *  * the, 3 characters long
          *  * lab, 3 characters long
          */
+        System.out.println("The provided arguments are: ");
+        for(String word : args){
+            System.out.println(wordToFormatedString(word));
+        }
     }
 }
