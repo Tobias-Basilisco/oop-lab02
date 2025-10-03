@@ -59,7 +59,23 @@ class WorkWithArrays {
     }
 
     static int[] sortArray(final int[] array, final boolean isDescending) {
-        return array;
+        int[] sortedArray = Arrays.copyOf(array, array.length);
+        boolean swapped = false;
+
+        do{
+            swapped = false;
+            for (int i = 0; i < array.length - 1; i++){
+                if (isDescending && sortedArray[i] < sortedArray[i + 1] || (!isDescending && sortedArray[i] > sortedArray[i + 1])){
+                    int temp = sortedArray[i];
+                    sortedArray[i] = sortedArray[i + 1];
+                    sortedArray[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+        } while(swapped == true);
+        
+        return sortedArray;
     }
 
     static double computeVariance(final int[] array) {
@@ -67,7 +83,22 @@ class WorkWithArrays {
     }
 
     static int[] revertUpTo(final int[] array, final int element) {
-        return null;
+        int[] revertedArray = new int[array.length];
+        int elementIndex = -1;
+        int i = 0;
+        for (; i < array.length; i++){
+            if (array[i] == element){
+                elementIndex = i;
+                break;
+            }
+        }
+        for (i = 0; i <= elementIndex; i++){
+            revertedArray[i] = array[elementIndex - i];
+        }
+        for (;i < array.length; i++){
+            revertedArray[i] = array[i];
+        }
+        return revertedArray;
     }
 
     static int[] duplicateElements(final int[] array, final int times) {
