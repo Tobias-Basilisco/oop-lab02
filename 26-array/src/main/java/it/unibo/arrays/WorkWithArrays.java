@@ -15,15 +15,47 @@ class WorkWithArrays {
     }
 
     static int[] evenElements(final int[] array) {
-        return null;
+        int[] evenIndexElements = new int[(array.length + 1) / 2];
+        int k = 0;
+        for (int i = 0; i < array.length; i++){
+            if(i % 2 == 0){
+                evenIndexElements[k] = array[i];
+                k++;
+            }
+        }
+        return evenIndexElements;
     }
 
     static int[] oddElements(final int[] array) {
-        return null;
+        int[] oddIndexElements = new int[array.length / 2];
+        int k = 0;
+        for (int i = 0; i < array.length; i++){
+            if(i % 2 == 1){
+                oddIndexElements[k] = array[i];
+                k++;
+            }
+        }
+        return oddIndexElements;
     }
 
     static int mostRecurringElement(final int[] array) {
-        return 0;
+        int mostOcurringElement = 0;
+        int mostOccurrencies = 0;
+        final int [] sortedArray = Arrays.copyOf(array, array.length);
+        Arrays.sort(sortedArray);
+        
+        for (int i = 0; i < sortedArray.length;){
+            int currentElement = sortedArray[i];
+            int currentOccurrencies = 1;
+
+            for(i++; i < sortedArray.length && currentElement == sortedArray[i]; i++, currentOccurrencies++);
+            if(currentOccurrencies > mostOccurrencies){
+                mostOccurrencies = currentOccurrencies;
+                mostOcurringElement = currentElement;
+            }
+        }
+
+        return mostOcurringElement;
     }
 
     static int[] sortArray(final int[] array, final boolean isDescending) {
@@ -55,7 +87,8 @@ class WorkWithArrays {
         return countOccurrencies(new int[] { 1, 2, 3, 4 }, 1) == 1
             && countOccurrencies(new int[] { 0, 2, 3, 4 }, 1) == 0
             && countOccurrencies(new int[] { 7, 4, 1, 9, 3, 1, 5 }, 2) == 0
-            && countOccurrencies(new int[] { 1, 2, 1, 3, 4, 1 }, 1) == 3;
+            && countOccurrencies(new int[] { 1, 2, 1, 3, 4, 1 }, 1) == 3
+            && countOccurrencies(new int[] { 1, 2, 1, 3, 4, 1, 7, 7, 7 }, 7) == 3;
     }
 
     /* Utility method for testing evenElems method */

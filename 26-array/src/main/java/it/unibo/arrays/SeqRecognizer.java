@@ -16,7 +16,16 @@ class SeqRecognizer {
      * Recognizes: 1{2}3.
      */
     static boolean checkSeq2(final int[] array) {
-        return false;
+        if (array.length <2 || array[0] != 1 || array[array.length - 1] != 3){
+            return false;
+        }
+        int i = 1;
+        for (;i < (array.length - 1); i++){
+            if (array[i] != 2){
+                return false;
+            }
+        }
+        return true;
     }
 
     /*
