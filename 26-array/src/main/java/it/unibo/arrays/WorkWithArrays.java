@@ -79,7 +79,19 @@ class WorkWithArrays {
     }
 
     static double computeVariance(final int[] array) {
-        return 0;
+        double mean = 0;
+        double sum = 0;
+        double variance = 0;
+
+        for (int elem : array){
+            sum += elem;
+        }
+        mean = sum / array.length;
+
+        for (int elem : array){
+            variance += Math.pow((elem - mean), 2) / array.length;
+        }
+        return variance;
     }
 
     static int[] revertUpTo(final int[] array, final int element) {
